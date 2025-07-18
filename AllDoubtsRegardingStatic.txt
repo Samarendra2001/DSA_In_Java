@@ -1,0 +1,153 @@
+static means we dont have to create an instance or object of a class.
+We can use the static method directlyy without creating an instance.
+And also we can create an instance of static method or class if we want,
+BUt it is of no use and not necessary.
+
+So keep In mind that if there is static written in somewhere else that means
+creating instances or objects can be skipped for accessing the method of the class.
+Method of the class can be directly accessed.
+
+static: The static keyword in Java means that a member belongs to the class,
+rather than an instance of the class. So, static members are shared across all instances of the class.
+
+Use static when the member (method or variable) is common for all instances or 
+doesn't need to work with an instance's data (like the Node class). For example, 
+helper methods like main() must be static.
+
+String[] args: It's an array of strings that you can pass command-line arguments
+to your program. Typically, this array allows the user to pass input values to your 
+program when you run it from the command line.
+
+public static Node buildTree(int nodes[])
+public static: The method buildTree() needs to be public (so it can be accessed 
+by other classes) and static (so it can be called without creating an instance of BinaryTree).
+
+Node: The return type of the method, which indicates that the function returns an 
+instance of the Node class. This is necessary since buildTree() is creating and returning a Node object as part of its tree-building logic.
+
+int[] nodes: A parameter (an array of integers) is passed into the method. This array 
+represents the data needed to construct the binary tree.
+
+
+Even though buildTree() is declared as static, using an object (instance) like tree.buildTree() still works, but it's unnecessary.
+Since buildTree() does not rely on instance-specific data (like instance variables or instance methods), 
+calling it directly on the class (BinaryTree.buildTree(nodes);) is more efficient and semantically correct when dealing with static methods.
+
+
+Why use public here?
+The main reason BinaryTreesYT is declared as public is because it’s the top-level 
+class of your program that contains your main() method. In Java, the main() method, 
+which serves as the starting point for program execution, must reside within a public 
+class if it's the main class used to run your program. You can only have one public 
+class in a file, and that class should match the filename (in this case, it’s BinaryTreesYT).
+
+If you intended to use BinaryTree in other packages, you would then declare it as public, making it 
+accessible outside of the BinaryTreesYT class:
+public class BinaryTreesYT {
+    public static class BinaryTree {
+        // Methods and data for BinaryTree
+    }
+}
+
+Then, another class in another package could access it like this:
+
+import somePackage.BinaryTreesYT;
+
+public class OtherClass {
+    public static void main(String[] args) {
+        BinaryTreesYT.BinaryTree tree = new BinaryTreesYT.BinaryTree();
+        // Use the BinaryTree
+    }
+}
+
+
+Scenario 1: Static Variable (static int idx)
+A static variable belongs to the class, not to any specific instance of the class. 
+This means that there's only one copy of the variable, no matter how many instances 
+of the class you create or how many times the class is used. It is shared across all instances of the class.
+
+Example with Static Variable:
+class ExampleStatic {
+    static int idx = 0;  // This is a static variable, shared by all instances.
+
+    public void increment() {
+        // Static variable idx is shared across all instances.
+        idx++;
+    }
+
+    public static void printIdx() {
+        // Static method can access static variables directly.
+        System.out.println("idx: " + idx);
+    }
+    
+    public static void main(String[] args) {
+        ExampleStatic obj1 = new ExampleStatic();
+        ExampleStatic obj2 = new ExampleStatic();
+        
+        obj1.increment();  // Increments the shared idx
+        obj2.increment();  // Increments the shared idx
+        
+        obj1.printIdx();  // Will print idx as 2
+        obj2.printIdx();  // Will also print idx as 2
+    }
+}
+Breakdown of Behind-the-Scenes Iteration with Static:
+When obj1.increment() is called, it increments the shared static variable idx by 1.
+Since idx is a static variable, it's not tied to obj1, but to the class itself (ExampleStatic). 
+So, the same variable idx is shared by both obj1 and obj2.
+
+Then, when obj2.increment() is called, it increments the same static variable idx by 1,
+changing its value from 1 to 2.
+
+Both obj1.printIdx() and obj2.printIdx() print the same value of idx, which is 2.
+This is because idx is static, and it's shared across both obj1 and obj2.
+
+Important Note:
+Static variables are not tied to individual objects, so every time you modify a 
+static variable, the new value is reflected across all objects that access it.
+
+
+Scenario 2: Instance Variable (int idx)
+An instance variable is tied to a specific object (an instance of the class). 
+This means that each object of the class has its own separate copy of the variable. 
+Changes to one object's instance variable do not affect other instances.
+
+Example with Instance Variable:
+class ExampleInstance {
+    int idx = 0;  // This is an instance variable, specific to each object.
+
+    public void increment() {
+        // Instance variable idx is separate for each object.
+        idx++;
+    }
+
+    public void printIdx() {
+        // Instance method can access instance variables of the current object.
+        System.out.println("idx: " + idx);
+    }
+
+    public static void main(String[] args) {
+        ExampleInstance obj1 = new ExampleInstance();
+        ExampleInstance obj2 = new ExampleInstance();
+        
+        obj1.increment();  // Increments obj1's idx
+        obj2.increment();  // Increments obj2's idx
+        
+        obj1.printIdx();  // Will print idx as 1
+        obj2.printIdx();  // Will print idx as 1
+    }
+}
+Breakdown of Behind-the-Scenes Iteration with Instance Variable:
+When obj1.increment() is called, obj1's idx is incremented by 1. 
+obj1.idx becomes 1.
+
+When obj2.increment() is called, it operates on obj2's own separate idx, 
+which is incremented from 0 to 1. This change is local to obj2 and has no effect on obj1.
+
+The instance variables of obj1 and obj2 are independent. As a result:
+
+obj1.printIdx() prints 1.
+obj2.printIdx() prints 1 as well, but this value is from obj2, and not linked to obj1.
+Key Difference:
+In the case of instance variables, each object has its own copy of the variable, 
+which means they do not affect each other. The variables are distinct for each instance of the class.
