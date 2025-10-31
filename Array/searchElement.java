@@ -30,3 +30,12 @@ public class searchElement {
         }else System.out.println("Element not found");
     }
 }
+
+// for each loop
+
+// it is similar to for loop but it is used to traverse the array or collection elements easily without using index variable
+// syntax: for(dataType variableName : arrayName/collectionName){
+//String names[]={"Aman","Suman","Raman","Karan"};
+//for(String name:names){//it is like for every name in names array print the name
+//System.out.println(name);
+//}  
