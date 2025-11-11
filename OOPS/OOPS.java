@@ -65,7 +65,7 @@ class Student{
     }
     //parameterized constructor
     Student(String name, int age){
-        this.name = name;
+        this.name = name;// here this.name refers to the name of the class Student and another name is the parameter
         this.age = age;
     }
     //copy Constructor
