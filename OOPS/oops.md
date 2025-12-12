@@ -24,3 +24,11 @@
 
 * if a subclass provides the specific implementation of the method that has been declared by one of its parent class, it is known as method overriding.
 * Method overriding is also known as runtime polymorphism. Hence, we can achieve Polymorphosm in Java with the help of inheritance.
+
+
+## static method or block loads first even before the main block..1st static block will load then main method will be called
+
+## super 
+it is used to refer the instance of immediate parent class
+
+* super and this keyword should be called 1st in a class means the 1st line..this and super thats why cant be used together bcz both is wriiten as the first line in a class or constructor.

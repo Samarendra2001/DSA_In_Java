@@ -1,4 +1,4 @@
-package ValidPalindrome;
+//package ValidPalindrome;
 
 public class Solution {
     public static boolean isPalindrome(String s){
@@ -38,15 +38,15 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution sol = new Solution();
+        //Solution sol = new Solution();
 
         // Test cases
         String test1 = "A man, a plan, a canal: Panama";
         String test2 = "race a car";
         String test3 = " ";
 
-        System.out.println("\"" + test1 + "\" is palindrome: " + sol.isPalindrome(test1));
-        System.out.println("\"" + test2 + "\" is palindrome: " + sol.isPalindrome(test2));
-        System.out.println("\"" + test3 + "\" is palindrome: " + sol.isPalindrome(test3));
+        System.out.println("\"" + test1 + "\" is palindrome: " + isPalindrome(test1));
+        System.out.println("\"" + test2 + "\" is palindrome: " + isPalindrome(test2));
+        System.out.println("\"" + test3 + "\" is palindrome: " + isPalindrome(test3));
     }
 }
